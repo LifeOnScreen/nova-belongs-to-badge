@@ -1,6 +1,6 @@
 <?php
 
-namespace Los\BelongsToBadge;
+namespace LifeOnScreen\BelongsToBadge;
 
 use Laravel\Nova\Fields\BelongsTo;
 

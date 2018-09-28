@@ -1,6 +1,6 @@
 <?php
 
-namespace Los\BelongsToBadge;
+namespace LifeOnScreen\BelongsToBadge;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
@@ -31,7 +31,7 @@ class FieldServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('command.make:migration:add-badge-colors', function ($app) {
-            return $app['Los\BelongsToBadge\Commands\CreateMigration'];
+            return $app['LifeOnScreen\BelongsToBadge\Commands\CreateMigration'];
         });
 
         $this->commands('command.make:migration:add-badge-colors');

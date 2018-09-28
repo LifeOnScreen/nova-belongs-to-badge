@@ -1,23 +1,31 @@
 {
-    "name": "los/belongs-to-badge",
-    "description": "A Laravel Nova field.",
+    "name": "lifeonscreen/nova-belongs-to-badge",
+    "description": "A Laravel Nova belongs to badge field.",
     "keywords": [
         "laravel",
         "nova"
     ],
+    "authors": [
+        {
+            "name": "Jani Cerar",
+            "email": "jani.cerar@lifeonscreen.com",
+            "homepage": "https://lifeonscreen.com"
+        }
+    ],
+    "homepage": "https://github.com/LifeOnScreen/nova-belongs-to-badge",
     "license": "MIT",
     "require": {
         "php": ">=7.1.0"
     },
     "autoload": {
         "psr-4": {
-            "Los\\BelongsToBadge\\": "src/"
+            "LifeOnScreen\\BelongsToBadge\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Los\\BelongsToBadge\\FieldServiceProvider"
+                "LifeOnScreen\\BelongsToBadge\\FieldServiceProvider"
             ]
         }
     },

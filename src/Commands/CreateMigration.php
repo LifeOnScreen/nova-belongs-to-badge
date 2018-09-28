@@ -1,6 +1,6 @@
 <?php
 
-namespace Los\BelongsToBadge\Commands;
+namespace LifeOnScreen\BelongsToBadge\Commands;
 
 use Illuminate\Database\Console\Migrations\BaseCommand;
 use Illuminate\Support\Str;
@@ -15,7 +15,7 @@ class CreateMigration extends BaseCommand
      *
      * @var string
      */
-    protected $name      = 'make:migration:add-badge-colors';
+    protected $name = 'make:migration:add-badge-colors';
 
     /**
      * @var string
@@ -46,9 +46,11 @@ class CreateMigration extends BaseCommand
             ]
         )->render();
 
-        $filename =  $this->getMigrationPath().'/'.date('Y_m_d_His').'_AddBadgeColorsTo'.$tableClass.'Table.php';
+        $filename = $this->getMigrationPath() . '/' . date('Y_m_d_His') . '_add_badge_colors_to_' .
+            $this->argument('table') . '_table.php';
         file_put_contents($filename, $contents);
-        $this->info('Migration '.$filename. ' crated.');
+        $this->info('Migration ' . $filename . ' crated.');
+
         return;
     }
 }
