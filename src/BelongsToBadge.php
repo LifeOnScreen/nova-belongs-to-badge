@@ -8,21 +8,18 @@ class BelongsToBadge extends BelongsTo
 {
     /**
      * The field's component.
-     *
      * @var string
      */
     public $component = 'belongs-to-badge';
 
     /**
      * Indicates if the element should be shown on the creation view.
-     *
      * @var bool
      */
     public $showOnCreation = false;
 
     /**
      * Indicates if the element should be shown on the update view.
-     *
      * @var bool
      */
     public $showOnUpdate = false;
@@ -30,13 +27,22 @@ class BelongsToBadge extends BelongsTo
     /**
      * Resolve the field's value.
      *
-     * @param  mixed $resource
-     * @param  string|null $attribute
+     * @param mixed $resource
+     * @param string|null $attribute
+     *
      * @return void
      */
     public function resolve($resource, $attribute = null)
     {
-        $value = $resource->{$this->attribute}()->withoutGlobalScopes()->first();
+        $value = null;
+
+        if ($resource->relationLoaded($this->attribute)) {
+            $value = $resource->getRelation($this->attribute);
+        }
+
+        if (!$value) {
+            $value = $resource->{$this->attribute}()->withoutGlobalScopes()->getResults();
+        }
 
         if ($value) {
             $this->belongsToId = $value->getKey();
@@ -49,5 +55,4 @@ class BelongsToBadge extends BelongsTo
             ]);
         }
     }
-
 }
